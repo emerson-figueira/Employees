@@ -1,5 +1,6 @@
 ﻿using EFCoreCodeFirstSample.Models;
 using EFCoreCodeFirstSample.Models.Repository;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,7 +17,9 @@ namespace EFCoreCodeFirstSample.DataManager
 
         public IEnumerable<Employee> GetAll()
         {
-            return _employeeContext.Employees.ToList();
+            return _employeeContext.Employees
+                    .Include(n => n.Cargos)
+                    .ToList();
         }
 
         public Employee Get(long id)
