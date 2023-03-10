@@ -30,7 +30,7 @@ namespace EFCoreCodeFirstSample.Controllers
             Employee employee = _dataRepository.Get(id);
             if (employee == null)
             {
-                return NotFound("The Employee record couldn't be found.");
+                return NotFound("Empregado não encontrado.");
             }
             return Ok(employee);
         }
@@ -41,7 +41,7 @@ namespace EFCoreCodeFirstSample.Controllers
         {
             if (employee == null)
             {
-                return BadRequest("Employee is null.");
+                return BadRequest("Empregado não informado.");
             }
             _dataRepository.Add(employee);
             return CreatedAtRoute(
@@ -56,12 +56,12 @@ namespace EFCoreCodeFirstSample.Controllers
         {
             if (employee == null)
             {
-                return BadRequest("Employee is null.");
+                return BadRequest("Empregado não informado.");
             }
             Employee employeeToUpdate = _dataRepository.Get(id);
             if (employeeToUpdate == null)
             {
-                return NotFound("The Employee record couldn't be found.");
+                return NotFound("Nenhum empregado encontrado.");
             }
             _dataRepository.Update(employeeToUpdate, employee);
             return NoContent();
@@ -74,7 +74,7 @@ namespace EFCoreCodeFirstSample.Controllers
             Employee employee = _dataRepository.Get(id);
             if (employee == null)
             {
-                return NotFound("The Employee record couldn't be found.");
+                return NotFound("Nenhum empregado encontrado.");
             }
             _dataRepository.Delete(employee);
             return NoContent();
